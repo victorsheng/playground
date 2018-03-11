@@ -1,38 +1,44 @@
-package com.example.demo.interview;
+package com.example.demo.sort.merge;
 
 import java.util.Arrays;
 
-public class Sort0 {
-
-
+public class MergeSortNotRecursion {
     public static void main(String[] args) {
-        int[] ints = {7, 5, 3, 123, 22, 52, 3, 3, 2, 3, 3, 3, 4, 7, 1, 10};
-        MergeSort(ints, 0, ints.length - 1);
+        int[] ints = {7, 5, 3, 123, 22, 52, 3, 3, 2, 3, 3, 3};
+        MergeSort2(ints);
         System.out.println(Arrays.toString(ints));
     }
 
 
-    public static void MergeSort(int[] arr, int low, int high) {
-        //使用递归的方式进行归并排序，所需要的空间复杂度是O（N+logN）
-        int mid = (low + high) / 2;
-        if (low < high) {
-            //递归地对左右两边进行排序
-            MergeSort(arr, low, mid);
-            MergeSort(arr, mid + 1, high);
-            //合并
-            merge(arr, low, mid, high);
+    public static void MergeSort2(int[] arr) {
+        //使用非递归的方式来实现归并排序
+        int len = arr.length;
+        int k = 1;
+
+        while (k < len) {
+            MergePass(arr, k, len);
+            k *= 2;
         }
     }
 
-    /**
-     * /**
-     * 将数组中low到high位置的数进行排序
-     *
-     * @param arr  待排序数组
-     * @param low  待排的开始位置
-     * @param mid  待排中间位置
-     * @param high 待排结束位置
-     */
+    //MergePass方法负责将数组中的相邻的有k个元素的字序列进行归并
+    private static void MergePass(int[] arr, int k, int n) {
+        int i = 0;
+        int j;
+
+        //从前往后,将2个长度为k的子序列合并为1个
+        while (i < n - 2 * k + 1) {
+            merge(arr, i, i + k - 1, i + 2 * k - 1);
+            i += 2 * k;
+        }
+
+        //这段代码保证了，将那些“落单的”长度不足两两merge的部分和前面merge起来。
+        if (i < n - k) {
+            merge(arr, i, i + k - 1, n - 1);
+        }
+
+    }
+
     //merge函数实际上是将两个有序数组合并成一个有序数组
     //因为数组有序，合并很简单，只要维护几个指针就可以了
     private static void merge(int[] arr, int low, int mid, int high) {
@@ -64,5 +70,4 @@ public class Sort0 {
         for (int l = 0; l < temp.length; l++)
             arr[low + l] = temp[l];
     }
-
 }

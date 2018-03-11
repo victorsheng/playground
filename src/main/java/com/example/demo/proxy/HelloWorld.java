@@ -1,4 +1,4 @@
-package com.example.demo.proxy.jdk;
+package com.example.demo.proxy;
 
 public interface HelloWorld {
 

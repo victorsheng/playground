@@ -1,4 +1,4 @@
-package com.example.demo.interview;
+package com.example.demo.sort;
 
 import java.util.Arrays;
 
@@ -34,13 +34,18 @@ public class QuickSort {
         int pivot = left;
         // 坑位
         int index = pivot + 1;
+
+        //遍历,从index开始
         for (int i = index; i <= right; i++) {
             if (arr[i] < arr[pivot]) {
+                //跟pivot比较,但是跟index进行比较
                 swap(arr, i, index);
                 index++;
             }
         }
+        //交换
         swap(arr, pivot, index - 1);
+        //返回坑位
         return index - 1;
     }
 
