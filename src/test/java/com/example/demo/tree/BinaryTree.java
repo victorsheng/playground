@@ -2,17 +2,7 @@ package com.example.demo.tree;
 
 import java.util.ArrayDeque;
 
-@Deprecated
 public class BinaryTree {
-    static class TreeNode {
-        int value;
-        TreeNode left;
-        TreeNode right;
-
-        public TreeNode(int value) {
-            this.value = value;
-        }
-    }
 
     TreeNode root;
 

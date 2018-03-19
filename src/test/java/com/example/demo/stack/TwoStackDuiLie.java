@@ -1,4 +1,4 @@
-package com.example.demo.interview;
+package com.example.demo.stack;
 
 import java.util.Stack;
 
