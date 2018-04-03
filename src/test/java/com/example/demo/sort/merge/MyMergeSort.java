@@ -25,24 +25,19 @@ public class MyMergeSort {
         }
     }
 
-    private static void merge(int[] arr, int[] temp, int left, int middle, int right) {
+    private static void merge(int[] arr, int[] temp, int left, int mid, int right) {
         int i = left;
-        int j = middle + 1;
-        int k = 0;
-        while (i <= middle && j <= right) {
-            if (arr[i] <= arr[j]) {
-                temp[k++] = arr[i++];
-            } else {
-                temp[k++] = arr[j++];
+        int j = mid + 1;
+        int index = 0;
+        while (i <= mid && j <= right) {
+            if (arr[i] < arr[j]) {
+                temp[index++] = arr[i++];
+            }else {
+                temp[index++] = arr[j++];
             }
         }
-        while (i <= middle) {
-            temp[k++] = arr[i++];
-        }
-        while (j <= right) {
-            temp[k++] = arr[j++];
-        }
-        
 
     }
+
+
 }
