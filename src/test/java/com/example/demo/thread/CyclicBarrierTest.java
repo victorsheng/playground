@@ -38,6 +38,9 @@ class Player implements Runnable {
             System.out.println("玩家" + id + "正在玩第一关...");
             cyclicBarrier.await();
             System.out.println("玩家" + id + "进入第二关...");
+            cyclicBarrier.await();
+            System.out.println("玩家" + id + "进入第三                  关...");
+
         } catch (InterruptedException | BrokenBarrierException e) {
             e.printStackTrace();
         }
