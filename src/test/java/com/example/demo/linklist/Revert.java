@@ -1,7 +1,5 @@
 package com.example.demo.linklist;
 
-import com.example.demo.leetCode.LinkedListSum;
-
 public class Revert {
 
     public static void main(String[] args) {
@@ -23,8 +21,8 @@ public class Revert {
 
     private static Node revert(Node head) {
         Node result, now = null;
-        now = head.next;
-        result = head;
+        now = head;
+        result = null;
         while (now != null) {
             Node next = now.next;
             now.next = result;
