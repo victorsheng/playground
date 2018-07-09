@@ -6,11 +6,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
-public class SelfHttpSocketClient {
+public class YLSocketClient {
 
   public static void main(String[] args) throws InterruptedException {
-    String host = "localhost";
+    String host = "www.ejlscm.com";
     String httpStr = "GET / HTTP/1.1\r\n"
         + "cache-control: no-cache\r\n"
         + "Postman-Token: 73a9386d-fdfb-405b-adc2-8c5844d636c8\r\n"
@@ -20,7 +21,7 @@ public class SelfHttpSocketClient {
         + "accept-encoding: gzip, deflate\r\n"
         + "Connection: keep-alive\r\n"
         + "\r\n";
-    int port = 4000;
+    int port = 80;
     try {
       System.out.println("连接到主机：" + host + " ，端口号：" + port);
       Socket client = new Socket(host, port);
@@ -38,7 +39,8 @@ public class SelfHttpSocketClient {
         System.out.println("服务器响应" + data);
       }
 
-      Thread.sleep(100000000);
+      client.close();
+//      Thread.sleep(100000000);
     } catch (IOException e) {
       e.printStackTrace();
     } finally {
