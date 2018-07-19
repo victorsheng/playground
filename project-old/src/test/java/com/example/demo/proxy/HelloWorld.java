@@ -2,6 +2,8 @@ package com.example.demo.proxy;
 
 public interface HelloWorld {
 
-    void sayHello(String name);
+  String sayHello(String name);
+
+  void sayHello2(String name);
 
 }

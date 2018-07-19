@@ -1,10 +1,10 @@
 package com.example.demo.proxy.cglib.enhancer;
 
 import com.example.demo.proxy.HelloWorldImpl;
-import org.springframework.cglib.core.DebuggingClassWriter;
+import com.example.demo.proxy.HelloWorldImpl2;
 import org.springframework.cglib.proxy.Enhancer;
 
-public class DoCGLib {
+public class DoCGLib2 {
 
   public static void main(String[] args) {
 //    System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY,
@@ -15,10 +15,10 @@ public class DoCGLib {
 
     //设置需要创建子类的类
     Enhancer enhancer = new Enhancer();
-    enhancer.setSuperclass(HelloWorldImpl.class);
+    enhancer.setSuperclass(HelloWorldImpl2.class);
     enhancer.setCallback(proxy);
     //通过字节码技术动态创建子类实例
-    HelloWorldImpl proxyImpo = (HelloWorldImpl) enhancer.create();
+    HelloWorldImpl2 proxyImpo = (HelloWorldImpl2) enhancer.create();
     proxyImpo.sayHello("wing");
   }
 }
