@@ -9,7 +9,7 @@ public class HelloWorldImpl2 {
   }
 
   private String privateInvoke() {
-    String privateInvoke = "         ,privateInvoke";
+    String privateInvoke = "privateInvoke";
     System.out.println(privateInvoke);
     return privateInvoke;
   }

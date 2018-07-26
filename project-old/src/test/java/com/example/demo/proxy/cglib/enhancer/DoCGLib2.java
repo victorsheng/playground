@@ -1,14 +1,17 @@
 package com.example.demo.proxy.cglib.enhancer;
 
-import com.example.demo.proxy.HelloWorldImpl;
 import com.example.demo.proxy.HelloWorldImpl2;
+import org.springframework.cglib.core.DebuggingClassWriter;
 import org.springframework.cglib.proxy.Enhancer;
 
+/**
+ * 代理类有一个共有方法 和 私有方法
+ */
 public class DoCGLib2 {
 
   public static void main(String[] args) {
-//    System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY,
-//        "/Users/victor/code/vicProjects/demo/project-old/doc/cglib");
+    System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY,
+        "/Users/victor/code/vicProjects/demo/project-old/doc/cglib2");
 
     CglibProxy proxy = new CglibProxy();
     //通过生成子类的方式创建代理类

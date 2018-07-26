@@ -1,7 +1,6 @@
 package com.example.demo.proxy.cglib.enhancer;
 
 import java.lang.reflect.Method;
-import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
 
