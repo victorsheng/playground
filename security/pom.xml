@@ -20,7 +20,15 @@
     <java_source_version>1.8</java_source_version>
     <java_target_version>1.8</java_target_version>
   </properties>
+  <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on -->
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk15on</artifactId>
+      <version>1.52</version>
+    </dependency>
 
+  </dependencies>
   <build>
     <plugins>
       <plugin>
