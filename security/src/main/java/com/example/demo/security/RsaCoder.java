@@ -51,13 +51,18 @@ public class RsaCoder {
     return signature.verify(sign);
   }
 
-  private KeyPair initKey() throws Exception {
+  public KeyPair initKey() throws Exception {
     // 初始化密钥对生成器
     KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(KEY_ALGORITHM);
     // 实例化密钥对生成器
     keyPairGen.initialize(KEY_SIZE);
     // 实例化密钥对
-    return keyPairGen.genKeyPair();
+    KeyPair keyPair = keyPairGen.genKeyPair();
+    String privateKEy = new String(Base64.getEncoder().encode(keyPair.getPrivate().getEncoded()));
+    String publicKey = new String(Base64.getEncoder().encode(keyPair.getPublic().getEncoded()));
+    System.out.println(privateKEy);
+    System.out.println(publicKey);
+    return keyPair;
   }
 
   public byte[] getPublicKey() {

@@ -3,12 +3,14 @@ package com.example.demo.security.symmetry;
 import java.math.BigInteger;
 import java.security.Key;
 import java.security.SecureRandom;
+import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 public class MyAES {
+
   private static final String KEY_ALGORITHM = "AES";
   private static final String CIPHER_ALGORITHM = "AES/ECB/PKCS5Padding";
   private static final String str = "i am victor";
@@ -20,6 +22,9 @@ public class MyAES {
       keyGenerator.init(new SecureRandom());
       SecretKey secretKey = keyGenerator.generateKey();
       byte[] keyBytes = secretKey.getEncoded();
+
+      String encode = new String(Base64.getEncoder().encode(keyBytes));
+      System.out.println(encode);
 
       //转换密钥
       Key key = new SecretKeySpec(keyBytes, KEY_ALGORITHM);
