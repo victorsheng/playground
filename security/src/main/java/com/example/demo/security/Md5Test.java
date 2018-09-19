@@ -96,7 +96,14 @@ public class Md5Test {
   }
 
 
-  private void test(String testType, int plan, byte[] target) throws Exception {
+  /**
+   *
+   * @param testType 测试类型,包含directBase64 或者 md5AndBase64
+   * @param executeTime 执行的次数
+   * @param fixLengthMessageData 长度固定的数据
+   * @throws Exception
+   */
+  private void test(String testType, int executeTime, byte[] fixLengthMessageData) throws Exception {
     Function<byte[], String> function;
     if ("directBase64".equals(testType)) {
       function = this::directBase64;
@@ -108,10 +115,10 @@ public class Md5Test {
 
     long begin = System.currentTimeMillis();
     String reuslt = "";
-    for (int i = 0; i < plan; i++) {
+    for (int i = 0; i < executeTime; i++) {
       //将计算的次数加入到数据中,使数据是变化的
       byte[] tmpBytes = intToByteArray(i);
-      byte[] mergeBytes = addBytes(target, tmpBytes);
+      byte[] mergeBytes = addBytes(fixLengthMessageData, tmpBytes);
       String sign = sign(function, mergeBytes);
       reuslt += sign;
     }
@@ -119,7 +126,7 @@ public class Md5Test {
     System.out.println(
         String.format(
             "plan:%s,target lenth:%s,reuslt length:%s,time cost:%s---------------------%s",
-            plan, target.length, reuslt.length(),
+            executeTime, fixLengthMessageData.length, reuslt.length(),
             end - begin, testType));
   }
 
