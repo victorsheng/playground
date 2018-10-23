@@ -1,10 +1,10 @@
-package safe.object;
+package nosafe.intarry;
 
 import org.junit.Test;
 
-public class ObjectCountPlus1 {
+public class IntArrayCountPlus1k {
 
-  private static Foo i = new Foo();
+  private static int[] i = new int[1];
 
   @Test
   public void main() {
@@ -14,34 +14,26 @@ public class ObjectCountPlus1 {
     new Thread(task).start();
     task = new Task(i);
     new Thread(task).start();
-    System.out.println(Thread.currentThread().getName() + ":" + i.z);
+    System.out.println(Thread.currentThread().getName() + ":" + i[0]);
     System.out.println(Thread.currentThread().getName() + ":" + System.identityHashCode(i));
   }
 
   static class Task implements Runnable {
 
-    private Foo i;
+    private int[] i;
 
-    public Task(Foo i) {
+    public Task(int[] i) {
       this.i = i;
     }
 
-    @Override
     public void run() {
-      for (int j = 0; j < 1; j++) {
-        i.z = i.z + 1;
+      for (int j = 0; j < 1000; j++) {
+        i[0] = i[0] + 1;
       }
-      System.out.println(Thread.currentThread().getName() + ":" + i.z);
+      System.out.println(Thread.currentThread().getName() + ":" + i[0]);
       System.out.println(Thread.currentThread().getName() + ":" + System.identityHashCode(i));
 
     }
-  }
-
-  static class Foo {
-
-    public int z;
-
-
   }
 
 }

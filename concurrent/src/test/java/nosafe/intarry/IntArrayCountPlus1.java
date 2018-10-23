@@ -1,4 +1,4 @@
-package safe.intarry;
+package nosafe.intarry;
 
 import org.junit.Test;
 
@@ -26,7 +26,6 @@ public class IntArrayCountPlus1 {
       this.i = i;
     }
 
-    @Override
     public void run() {
       for (int j = 0; j < 1; j++) {
         i[0] = i[0] + 1;

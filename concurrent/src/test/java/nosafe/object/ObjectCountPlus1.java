@@ -1,39 +1,46 @@
-package nosafe;
+package nosafe.object;
 
-import java.math.BigInteger;
 import org.junit.Test;
 
-public class BigIntegerCount {
+public class ObjectCountPlus1 {
 
-  private static BigInteger i = BigInteger.ZERO;
+  private static Foo i = new Foo();
 
   @Test
-  public void main2() {
+  public void main() {
     Task task = new Task(i);
     new Thread(task).start();
+    task = new Task(i);
     new Thread(task).start();
+    task = new Task(i);
     new Thread(task).start();
-    System.out.println(Thread.currentThread().getName() + ":" + i.intValue());
+    System.out.println(Thread.currentThread().getName() + ":" + i.z);
     System.out.println(Thread.currentThread().getName() + ":" + System.identityHashCode(i));
   }
 
   static class Task implements Runnable {
 
-    private BigInteger i;
+    private Foo i;
 
-    public Task(BigInteger i) {
+    public Task(Foo i) {
       this.i = i;
     }
 
-
     public void run() {
-      for (int j = 0; j < 1000; j++) {
-        i = i.add(BigInteger.ONE);
+      for (int j = 0; j < 1; j++) {
+        i.z = i.z + 1;
       }
-      System.out.println(Thread.currentThread().getName() + ":" + i.intValue());
+      System.out.println(Thread.currentThread().getName() + ":" + i.z);
       System.out.println(Thread.currentThread().getName() + ":" + System.identityHashCode(i));
 
     }
+  }
+
+  static class Foo {
+
+    public int z;
+
+
   }
 
 }

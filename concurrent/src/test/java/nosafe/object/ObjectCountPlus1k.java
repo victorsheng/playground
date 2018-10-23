@@ -1,14 +1,11 @@
-package nosafe;
+package nosafe.object;
 
 import org.junit.Test;
 
-public class IntegerCountPlus1k {
+public class ObjectCountPlus1k {
 
-  private static Integer i = 0;
+  private static Foo i = new Foo();
 
-  /**
-   * 始终是1k
-   */
   @Test
   public void main() {
     Task task = new Task(i);
@@ -17,39 +14,33 @@ public class IntegerCountPlus1k {
     new Thread(task).start();
     task = new Task(i);
     new Thread(task).start();
-    printIntegerAddress();
-  }
-
-  private void printIntegerAddress() {
+    System.out.println(Thread.currentThread().getName() + ":" + i.z);
     System.out.println(Thread.currentThread().getName() + ":" + System.identityHashCode(i));
-  }
-
-  @Test
-  public void main2() {
-    Task task = new Task(i);
-    new Thread(task).start();
-    new Thread(task).start();
-    new Thread(task).start();
-    printIntegerAddress();
   }
 
   static class Task implements Runnable {
 
-    private Integer i;
+    private Foo i;
 
-    public Task(Integer i) {
+    public Task(Foo i) {
       this.i = i;
     }
 
-    @Override
     public void run() {
       for (int j = 0; j < 1000; j++) {
-        i++;
+        i.z = i.z + 1;
       }
-      System.out.println(Thread.currentThread().getName() + ":" + i);
+      System.out.println(Thread.currentThread().getName() + ":" + i.z);
       System.out.println(Thread.currentThread().getName() + ":" + System.identityHashCode(i));
 
     }
+  }
+
+  static class Foo {
+
+    public int z;
+
+
   }
 
 }
