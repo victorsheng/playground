@@ -1,13 +1,14 @@
-package nosafe.intarry;
+package nosafe.intarry.positionsame;
 
+import java.util.concurrent.TimeUnit;
 import org.junit.Test;
 
-public class IntArrayCountPlus1k {
+public class IntArrayCountPlus100k {
 
   private static int[] i = new int[1];
 
   @Test
-  public void main() {
+  public void main() throws InterruptedException {
     Task task = new Task(i);
     new Thread(task).start();
     task = new Task(i);
@@ -16,6 +17,7 @@ public class IntArrayCountPlus1k {
     new Thread(task).start();
     System.out.println(Thread.currentThread().getName() + ":" + i[0]);
     System.out.println(Thread.currentThread().getName() + ":" + System.identityHashCode(i));
+    TimeUnit.SECONDS.sleep(10);
   }
 
   static class Task implements Runnable {
@@ -27,7 +29,7 @@ public class IntArrayCountPlus1k {
     }
 
     public void run() {
-      for (int j = 0; j < 1000; j++) {
+      for (int j = 0; j < 100000; j++) {
         i[0] = i[0] + 1;
       }
       System.out.println(Thread.currentThread().getName() + ":" + i[0]);

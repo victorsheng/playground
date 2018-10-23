@@ -1,8 +1,8 @@
-package nosafe.intarry;
+package nosafe.intarry.positionsame;
 
 import org.junit.Test;
 
-public class IntArrayCountPlus1 {
+public class IntArrayCountPlus1k {
 
   private static int[] i = new int[1];
 
@@ -27,7 +27,7 @@ public class IntArrayCountPlus1 {
     }
 
     public void run() {
-      for (int j = 0; j < 1; j++) {
+      for (int j = 0; j < 1000; j++) {
         i[0] = i[0] + 1;
       }
       System.out.println(Thread.currentThread().getName() + ":" + i[0]);
