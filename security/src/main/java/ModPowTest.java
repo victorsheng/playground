@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 
-public class Test {
+public class ModPowTest {
 
   public static void main(String[] args) {
     BigInteger integer = BigInteger.valueOf(65l);
