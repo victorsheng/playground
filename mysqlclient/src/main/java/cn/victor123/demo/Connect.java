@@ -1,3 +1,5 @@
+package cn.victor123.demo;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -18,6 +20,7 @@ public class Connect {
     try {
       Connection connect = DriverManager.getConnection(
           "jdbc:mysql://172.23.7.0:3306/demo", "opal", "f6daee460fc578e68f45a801de6e13de");
+//          "jdbc:mysql://172.20.33.8:3306/opal_data_share_demo", "opal", "09f6c72c-d288-11e8-b8fa-f4e9d49f9720");
       //连接URL为   jdbc:mysql//服务器地址/数据库名  ，后面的2个参数分别是登陆用户名和密码
 
       System.out.println("Success connect Mysql server!");
