@@ -21,6 +21,11 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>2.1.0.RELEASE</version>
+        <configuration>
+          <mainClass>cn.victor123.demo.Connect</mainClass>
+          <attach>false</attach>
+        </configuration>
         <executions>
           <execution>
             <goals>
