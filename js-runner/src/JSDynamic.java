@@ -15,11 +15,17 @@ public class JSDynamic {
     return engine;
   }
 
+  /**
+   * read file
+   */
   private static FileReader getScriptFile() throws FileNotFoundException {
     Path file = Paths.get("js-runner/scripts", "util.js").toAbsolutePath();
     return new FileReader(file.toFile());
   }
 
+  /**
+   * engine load js file
+   */
   private static void exeFile(FileReader fr, ScriptEngine engine) {
     try {
       engine.eval(fr);
