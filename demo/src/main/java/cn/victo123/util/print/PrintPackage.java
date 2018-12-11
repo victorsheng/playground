@@ -28,6 +28,7 @@ public class PrintPackage {
       try {
         builder.addSource(new FileReader(s));
       } catch (Exception e) {
+        System.err.println(s);
         e.printStackTrace();
       }
     }
