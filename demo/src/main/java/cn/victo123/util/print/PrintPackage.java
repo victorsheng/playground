@@ -25,7 +25,11 @@ public class PrintPackage {
     Set<String> resultSet = new TreeSet<>();
     JavaDocBuilder builder = new JavaDocBuilder();
     for (String s : fileList) {
-      builder.addSource(new FileReader(s));
+      try {
+        builder.addSource(new FileReader(s));
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
 
     JavaSource[] sources = builder.getSources();
