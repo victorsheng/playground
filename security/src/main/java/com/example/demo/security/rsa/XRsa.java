@@ -180,8 +180,10 @@ public class XRsa {
     String middle = xRsa.publicEncrypt(smple);
     String revert = xRsa.privateDecrypt(middle);
 
-    System.out.println(smple);
-    System.out.println(revert);
+    System.out.println("smple:" + smple);
+    System.out.println("middle:" + middle);
+    System.out.println("revert:" + revert);
+
 
     System.out.println(xRsa.publicKey.getModulus().bitLength() / 8);
     System.out.println(xRsa.privateKey.getModulus().bitLength() / 8);

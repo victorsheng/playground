@@ -39,7 +39,6 @@ public class RsaModel {
     this.e = e;
   }
 
-
   @Override
   public String toString() {
     final StringBuilder sb = new StringBuilder("homonorphic.RsaModel{");

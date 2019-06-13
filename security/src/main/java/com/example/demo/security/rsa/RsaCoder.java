@@ -1,4 +1,4 @@
-package com.example.demo.security;
+package com.example.demo.security.rsa;
 
 import java.security.KeyFactory;
 import java.security.KeyPair;
