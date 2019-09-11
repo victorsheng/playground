@@ -17,9 +17,10 @@ public class ShellMain {
         String key = "TaskManagerRunner";
         String command = "ps -aux|grep " + key
             + "|grep -v grep|cut -c 9-15 |xargs /home/hadoop/flink-1.9-tpcds-master/asyn/profiler.sh -f /home/hadoop/flink-1.9-tpcds-master/log/result.svg stop";
+        String[] commands = {"/bin/bash", "-c", "jps -v|grep java"};
         Process exec = Runtime.getRuntime()
             .exec(
-                command);
+                commands);
         System.out.println(command);
         BufferedReader tBufferedReader = new BufferedReader(
             new InputStreamReader(exec.getInputStream()));
